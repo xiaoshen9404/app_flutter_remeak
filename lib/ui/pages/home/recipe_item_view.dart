@@ -35,7 +35,7 @@ class RecipeItemView extends StatelessWidget {
                   width: 100,
                   height: 200,
                   image: _recipeRows?.smallVertical ??
-                      "https://th.bing.com/th/id/R.78cd71da0beb7a090b8a3e8c68518887?rik=814yGbQXVR98hw&pid=ImgRaw&r=0",
+                      "",
                   placeholder: "assets/images/mall.png",
                   fit: BoxFit.cover,
                 ),
