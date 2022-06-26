@@ -1,5 +1,4 @@
-import 'package:app_flutter_remeak/widgets/custom_star_rating.dart';
-import 'package:app_flutter_remeak/widgets/dashed_line.dart';
+import 'package:app_flutter_remeak/ui/pages/main/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -29,45 +28,14 @@ class MyApp extends StatelessWidget {
             );
           },
           theme: ThemeData(
-            textTheme: TextTheme(
-                //要支持下面这个需要使用第一种初始化方式
-                button: TextStyle(fontSize: 45.sp)),
-          ),
-          home: const HomePage(),
+              textTheme: TextTheme(
+                  //要支持下面这个需要使用第一种初始化方式
+                  button: TextStyle(fontSize: 45.sp)),
+              primarySwatch: Colors.blue,
+              splashColor: Colors.transparent),
+          home: MainPage(),
         );
       },
     );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            "首页",
-            style: TextStyle(fontSize: 20),
-          ),
-        ),
-        body: Center(
-          child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                CustomStarRating(totalRating: 7, rating: 3.7),
-                Container(
-                  width: 200.w,
-                  child: DashedLine(
-                    count: 20,
-                    dashedWidth: 5.w,
-                    dashedHeight: 1.h,
-                    borderRadius: BorderRadius.all(Radius.circular(3.r)),
-                  ),
-                )
-              ]),
-        ));
   }
 }
