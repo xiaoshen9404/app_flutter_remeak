@@ -48,6 +48,7 @@ class RecipeItemView extends StatelessWidget {
                     children: [
                       Text.rich(TextSpan(children: <InlineSpan>[
                         WidgetSpan(
+                          alignment: PlaceholderAlignment.bottom,
                             child: Icon(
                               Icons.play_circle_outline,
                               color: Colors.pink,
