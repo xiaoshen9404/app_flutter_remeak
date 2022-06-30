@@ -14,6 +14,7 @@ class _SubjectContentState extends State<SubjectContent> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SubStatusContainer(
+        key: ValueKey("SubStatusContainer"),
         counter: _counter,
         child: Column(
           children: [ShowData01(), ShowData02()],
@@ -33,10 +34,11 @@ class _SubjectContentState extends State<SubjectContent> {
 class SubStatusContainer extends InheritedWidget {
   int counter;
 
-  SubStatusContainer({this.counter = 100, required super.child});
+  SubStatusContainer({this.counter = 100, required super.child, Key? key})
+      : super(key: key);
 
   static SubStatusContainer? of(BuildContext context) {
-    //沿着Element树，往上找到最近的InheritedWidget，从Element中取出Widget
+    //沿着Element树，往上找到最近的SubStatusContainer，从Element中取出Widget
     return context.dependOnInheritedWidgetOfExactType();
   }
 
@@ -44,19 +46,13 @@ class SubStatusContainer extends InheritedWidget {
   bool updateShouldNotify(covariant SubStatusContainer oldWidget) {
     //返回true时，依赖此InheritedWidget 的stful会执行didChangeDependencies
     //返回false是，不会执行
-
     return oldWidget.counter != counter;
   }
 }
 
-class ShowData01 extends StatefulWidget {
+class ShowData01 extends StatelessWidget {
   const ShowData01({Key? key}) : super(key: key);
 
-  @override
-  State<ShowData01> createState() => _ShowData01State();
-}
-
-class _ShowData01State extends State<ShowData01> {
   @override
   Widget build(BuildContext context) {
     int? counter = SubStatusContainer.of(context)?.counter;
@@ -64,13 +60,6 @@ class _ShowData01State extends State<ShowData01> {
       color: Colors.red,
       child: Text("当前计数${counter}"),
     );
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    //当本widget依赖某个InheritedWidget的某些状态，并且InheritedWidget中的状态发生改变时，会调用
-    //这里只的就是 int? counter = SubStatusContainer.of(context)?.counter; 发生变化
   }
 }
 
@@ -82,6 +71,12 @@ class ShowData02 extends StatefulWidget {
 }
 
 class _ShowData02State extends State<ShowData02> {
+  @override
+  void initState() {
+    super.initState();
+    print('_ShowData02State initState');
+  }
+
   @override
   Widget build(BuildContext context) {
     int? counter = SubStatusContainer.of(context)?.counter;
