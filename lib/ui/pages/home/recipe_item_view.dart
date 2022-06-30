@@ -10,7 +10,7 @@ class RecipeItemView extends StatelessWidget {
   final int index;
   final RecipeRows? _recipeRows;
 
-  RecipeItemView(this.index, this._recipeRows);
+  RecipeItemView(this.index, this._recipeRows, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +34,7 @@ class RecipeItemView extends StatelessWidget {
                 child: FadeInImage.assetNetwork(
                   width: 100,
                   height: 200,
-                  image: _recipeRows?.smallVertical ??
-                      "",
+                  image: _recipeRows?.smallVertical ?? "",
                   placeholder: "assets/images/mall.png",
                   fit: BoxFit.cover,
                 ),
@@ -48,7 +47,7 @@ class RecipeItemView extends StatelessWidget {
                     children: [
                       Text.rich(TextSpan(children: <InlineSpan>[
                         WidgetSpan(
-                          alignment: PlaceholderAlignment.bottom,
+                            alignment: PlaceholderAlignment.bottom,
                             child: Icon(
                               Icons.play_circle_outline,
                               color: Colors.pink,
@@ -57,7 +56,7 @@ class RecipeItemView extends StatelessWidget {
                         TextSpan(
                           text: _recipeRows?.recipeName ?? "",
                           style:
-                          TextStyle(color: Colors.black, fontSize: 18.sp),
+                              TextStyle(color: Colors.black, fontSize: 18.sp),
                         ),
                         TextSpan(
                           text: _recipeRows?.createTime ?? "",
@@ -76,8 +75,10 @@ class RecipeItemView extends StatelessWidget {
                           )
                         ],
                       ),
-                      Text(_recipeRows?.recipeContent ?? "",
-                        style: TextStyle(fontSize: 12.sp, color: Colors.black),)
+                      Text(
+                        _recipeRows?.recipeContent ?? "",
+                        style: TextStyle(fontSize: 12.sp, color: Colors.black),
+                      )
                     ],
                   ),
                 ),
@@ -112,10 +113,7 @@ class RecipeItemView extends StatelessWidget {
             ]),
           ),
           Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .width,
+            width: MediaQuery.of(context).size.width,
             padding: EdgeInsets.fromLTRB(10.w, 10.h, 10.w, 10.h),
             decoration: const BoxDecoration(color: Color(0xfff2eff2)),
             child: Text(
