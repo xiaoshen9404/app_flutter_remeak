@@ -8,8 +8,16 @@ class MinePageContet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+      floatingActionButton: Selector<CounterViewModel, CounterViewModel>(
+        selector: (context, vale) => vale,
+        builder: (context, value, child) {
+          return FloatingActionButton(
+            onPressed: () {
+              value.counter++;
+            },
+          );
+        },
+        shouldRebuild: (previous, next) => false,
       ),
       body: Center(
         child: Column(

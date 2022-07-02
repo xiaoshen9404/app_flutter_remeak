@@ -10,8 +10,8 @@ void main() {
     providers: [
       ChangeNotifierProvider(
         create: (context) {
-          //       创建共享数据
-          CounterViewModel();
+          //       创建共享数据 记得一定要return
+          return CounterViewModel();
         },
       )
     ],
