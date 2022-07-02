@@ -35,7 +35,7 @@ class RecipeItemView extends StatelessWidget {
                   width: 100,
                   height: 200,
                   image: _recipeRows?.smallVertical ?? "",
-                  placeholder: "assets/images/mall.png",
+                  placeholder: "images/mall.png",
                   fit: BoxFit.cover,
                 ),
               ),
@@ -99,7 +99,7 @@ class RecipeItemView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      "assets/images/wish.png",
+                      "images/wish.png",
                       width: 30.w,
                       height: 30.h,
                     ),

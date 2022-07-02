@@ -9,7 +9,7 @@ void main() {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(
-        create: (BuildContext context) {
+        create: (context) {
           //       创建共享数据
           CounterViewModel();
         },
