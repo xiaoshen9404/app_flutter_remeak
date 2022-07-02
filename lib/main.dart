@@ -1,9 +1,22 @@
 import 'package:app_flutter_remeak/ui/pages/main/main_page.dart';
+import 'package:app_flutter_remeak/viewmodel/counter_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  // runApp(MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (BuildContext context) {
+          //       创建共享数据
+          CounterViewModel();
+        },
+      )
+    ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
