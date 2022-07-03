@@ -1,9 +1,24 @@
+import 'package:app_flutter_remeak/router/routes_map.dart';
 import 'package:app_flutter_remeak/ui/pages/main/main_page.dart';
+import 'package:app_flutter_remeak/ui/pages/recipe/recipe_detail.dart';
+import 'package:app_flutter_remeak/viewmodel/counter_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  // runApp(MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (context) {
+          //       创建共享数据 记得一定要return
+          return CounterViewModel();
+        },
+      )
+    ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -33,7 +48,14 @@ class MyApp extends StatelessWidget {
                   button: TextStyle(fontSize: 45.sp)),
               primarySwatch: Colors.blue,
               splashColor: Colors.transparent),
-          home: MainPage(),
+          routes: AppRouter.routes,
+          initialRoute:AppRouter.initialRoute,
+          onGenerateRoute: AppRouter.generateRoute,
+          onUnknownRoute: (RouteSettings settings) {
+            //路由跳转的路径不存在时，执行此方法,让我们指向另一个路径，比如统一的错误页面
+            return null;
+          },
+          // home: MainPage(),
         );
       },
     );
