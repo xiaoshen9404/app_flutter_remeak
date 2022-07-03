@@ -25,7 +25,7 @@ class RecipeDetail extends StatelessWidget {
                 child: Icon(Icons.arrow_back)),
           ),
           body: Column(children: [
-            Text(msg ?? ""),
+            Text("菜谱详情"),
             ElevatedButton(
                 onPressed: () => Navigator.of(context).pop("详情返回的参数"),
                 child: Text("BTN")),

@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:app_flutter_remeak/router/routes_map.dart';
 import 'package:app_flutter_remeak/ui/pages/main/main_page.dart';
 import 'package:app_flutter_remeak/ui/pages/recipe/recipe_detail.dart';
+import 'package:app_flutter_remeak/ui/theme/app_themes.dart';
 import 'package:app_flutter_remeak/viewmodel/counter_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -42,14 +45,9 @@ class MyApp extends StatelessWidget {
               child: widget!,
             );
           },
-          theme: ThemeData(
-              textTheme: TextTheme(
-                  //要支持下面这个需要使用第一种初始化方式
-                  button: TextStyle(fontSize: 45.sp)),
-              primarySwatch: Colors.blue,
-              splashColor: Colors.transparent),
+          theme: LightTheme.themeData,
           routes: AppRouter.routes,
-          initialRoute:AppRouter.initialRoute,
+          initialRoute: AppRouter.initialRoute,
           onGenerateRoute: AppRouter.generateRoute,
           onUnknownRoute: (RouteSettings settings) {
             //路由跳转的路径不存在时，执行此方法,让我们指向另一个路径，比如统一的错误页面

@@ -28,15 +28,20 @@ class _SubjectContentState extends State<SubjectContent>
           // setState(() {
           //   _counter++;
           // });
-          Navigator.of(context).push(PageRouteBuilder(
-              transitionDuration: Duration(seconds: 3),
-              pageBuilder:
-                  //Animation<double> animation 就是专场执行的过程百分比 0.0-1.0,可以直接给动画用
-                  (BuildContext context, Animation<double> animation,
-                      Animation<double> secondaryAnimation) {
-                return FadeTransition(
-                    opacity: animation, child: RecipeDetail());
-              }));
+          // Navigator.of(context).push(PageRouteBuilder(
+          //     transitionDuration: Duration(seconds: 3),
+          //     pageBuilder:
+          //         //Animation<double> animation 就是专场执行的过程百分比 0.0-1.0,可以直接给动画用
+          //         (BuildContext context, Animation<double> animation,
+          //             Animation<double> secondaryAnimation) {
+          //       return FadeTransition(
+          //           opacity: animation, child: RecipeDetail());
+          //     }));
+          // Navigator.of(context).pushNamed(RecipeDetail.ROUTE_NAME);
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (BuildContext context) {
+            return RecipeDetail();
+          }));
         },
       ),
     );
