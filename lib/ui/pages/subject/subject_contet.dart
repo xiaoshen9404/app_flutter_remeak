@@ -1,3 +1,4 @@
+import 'package:app_flutter_remeak/ui/pages/recipe/recipe_detail.dart';
 import 'package:flutter/material.dart';
 
 class SubjectContent extends StatefulWidget {
@@ -7,7 +8,8 @@ class SubjectContent extends StatefulWidget {
   State<SubjectContent> createState() => _SubjectContentState();
 }
 
-class _SubjectContentState extends State<SubjectContent> {
+class _SubjectContentState extends State<SubjectContent>
+    with SingleTickerProviderStateMixin {
   int _counter = 100;
 
   @override
@@ -21,10 +23,20 @@ class _SubjectContentState extends State<SubjectContent> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        heroTag: null,
         onPressed: () {
-          setState(() {
-            _counter++;
-          });
+          // setState(() {
+          //   _counter++;
+          // });
+          Navigator.of(context).push(PageRouteBuilder(
+              transitionDuration: Duration(seconds: 3),
+              pageBuilder:
+                  //Animation<double> animation 就是专场执行的过程百分比 0.0-1.0,可以直接给动画用
+                  (BuildContext context, Animation<double> animation,
+                      Animation<double> secondaryAnimation) {
+                return FadeTransition(
+                    opacity: animation, child: RecipeDetail());
+              }));
         },
       ),
     );

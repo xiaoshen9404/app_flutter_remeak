@@ -12,6 +12,7 @@ class MinePageContet extends StatelessWidget {
         selector: (context, vale) => vale,
         builder: (context, value, child) {
           return FloatingActionButton(
+            heroTag: null,
             onPressed: () {
               value.counter++;
             },
@@ -74,6 +75,7 @@ class _ShowData02State extends State<ShowData02> {
   @override
   Widget build(BuildContext context) {
     return Consumer<CounterViewModel>(
+      //builder的 Widget? child 来自于 Consumer的child参数
       builder: (BuildContext context, value, Widget? child) {
         return Card(
           color: Colors.blue,

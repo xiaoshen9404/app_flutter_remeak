@@ -1,6 +1,9 @@
 import 'package:app_flutter_remeak/ui/pages/home/home.dart';
+import 'package:app_flutter_remeak/ui/pages/main/main_page.dart';
 import 'package:app_flutter_remeak/ui/pages/mine/mine.dart';
 import 'package:flutter/cupertino.dart';
+import '../demo/anim_page.dart';
+import '../demo/demo_page.dart';
 import '../subject/subjec.dart';
 import 'bottom_bar_item.dart';
 
@@ -15,7 +18,7 @@ List<BottomNavigationBarItem> nvItems = [
 List<Widget> pages = [
   HomePage(),
   SubjectPage(),
-  HomePage(),
-  HomePage(),
+  SubjectPage(),
+  DemoPage(),
   MinePage(),
 ];
